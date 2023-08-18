@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+body,ul,li,h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.liferay-search__container {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.liferay-search__results-list {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  gap: 100px 0;
+  @media (min-width: 569px) and (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px 30px;
+  }
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 100px 40px;
+  }
+}

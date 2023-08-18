@@ -1,0 +1,9 @@
+.liferay-search-card-result{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.liferay-search-card-result h5{
+  margin: 10px 0;
+}

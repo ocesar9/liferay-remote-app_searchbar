@@ -1,0 +1,25 @@
+.error-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.error-message {
+  font-size: 16px;
+  color: #ff5555;
+  font-weight: 700;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

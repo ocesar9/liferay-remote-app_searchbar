@@ -1,0 +1,6 @@
+.liferay-search-bar .liferay-search-bar__form-container{
+  display: flex;
+}
+.liferay-search-bar .liferay-search-bar__form-container input{
+  width: 100%;
+}

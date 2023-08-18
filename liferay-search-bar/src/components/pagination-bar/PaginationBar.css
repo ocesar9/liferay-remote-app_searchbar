@@ -1,0 +1,30 @@
+.liferay-search-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+
+}
+
+.liferay-search-pagination .pagination-button,
+.liferay-search-pagination .pagination-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.liferay-search-pagination .pagination-button {
+  cursor: pointer;
+}
+
+.liferay-search-pagination .pagination-button[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.liferay-search-pagination .pagination-index {
+  margin: 0 10px;
+  @media (min-width: 569px) {
+    margin: 0 40px;
+  }
+}

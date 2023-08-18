@@ -1,0 +1,25 @@
+{
+  "short_name": "Liferay Search Bar Headless Api",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "apple-touch-icon.webp",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/webp"
+    },
+    {
+      "src": "apple-touch-icon.webp",
+      "type": "image/webp",
+      "sizes": "192x192"
+    },
+    {
+      "src": "apple-touch-icon.webp",
+      "type": "image/webp",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
