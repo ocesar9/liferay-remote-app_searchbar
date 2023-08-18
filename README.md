@@ -20,7 +20,7 @@
     }
 > After that set in the App with the attributes to use to run the application, these attributes it have been configured in the Client Extension properties.
 
-    const ELEMENT_ID = 'vale-busca-de-conteudo-interno';
+    const ELEMENT_ID = 'liferay-search';
     if (!customElements.get(ELEMENT_ID)) {
       customElements.define(ELEMENT_ID, WebComponent);
     }
