@@ -1,4 +1,9 @@
-export const API_URL = 'https://vale.com';
+export const API_URL =
+  typeof Liferay !== 'undefined' ? Liferay.ThemeDisplay.getPortalURL() : null;
+export const acceptLanguage =
+  typeof themeDisplay !== 'undefined'
+    ? themeDisplay.getLanguageId().replace('_', '-')
+    : 'en-US';
 
 export function FETCH_CONTENT({
   contentId,

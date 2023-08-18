@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 import SearchBar from './components/search-bar/SearchBar';
 import './App.css';
 import { API_URL, FETCH_CONTENT } from './api'; // Update import statement
@@ -9,12 +10,7 @@ import PaginationBar from './components/pagination-bar/PaginationBar';
 import Loading from './interface-elements/Loading';
 import Error from './interface-elements/Error';
 
-const App = ({
-  contentId = 2672918,
-  acceptLanguage = 'pt-BR',
-  itemsPerPage = 3,
-  scopeClass = 'styled-search-bar',
-}) => {
+const App = ({ contentId, itemsPerPage, scopeClass }) => {
   const [items, setItems] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +22,6 @@ const App = ({
     async function fetchData() {
       const { url, options } = FETCH_CONTENT({
         contentId,
-        acceptLanguage,
         query: query || undefined,
         itemsPerPage,
         currentPage,
@@ -54,7 +49,6 @@ const App = ({
   const handleSearch = async (query) => {
     const { url, options } = FETCH_CONTENT({
       contentId,
-      acceptLanguage,
       query,
       itemsPerPage,
       currentPage: 1,
@@ -73,7 +67,7 @@ const App = ({
   };
 
   return (
-    <div className={`liferay-search__container ${scopeClass}`}>
+    <div className={`liferay-search ${scopeClass}`}>
       <SearchBar onSearch={handleSearch} />
       {error ? (
         <Error message={error} />
@@ -101,5 +95,24 @@ const App = ({
     </div>
   );
 };
+class WebComponent extends HTMLElement {
+  connectedCallback() {
+    createRoot(this).render(
+      <App
+        contentId={this.getAttribute('contentId')}
+        itemsPerPage={this.getAttribute('itemsPerPage')}
+        scopeClass={this.getAttribute('scopeClass')}
+      />,
+      this,
+    );
+  }
+}
+
+// contentId, itemsPerPage, scopeClass
+
+const ELEMENT_ID = 'liferay-search';
+if (!customElements.get(ELEMENT_ID)) {
+  customElements.define(ELEMENT_ID, WebComponent);
+}
 
 export default App;
