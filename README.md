@@ -1,4 +1,4 @@
-# Liferay Search - Headless Delivery
+# Liferay Searchbar - Headless Delivery
 
 ### That Search Bar was created with the intention of an alternative to getting portal data faster in portal optimization cases, the structure used was created as a Liferay Client Extension.
 
