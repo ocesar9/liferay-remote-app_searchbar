@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import SearchBar from './components/search-bar/SearchBar';
 import './App.css';
-import { API_URL, FETCH_CONTENT } from './api'; // Update import statement
+import { FETCH_CONTENT } from './api';
 import useFetch from './hooks/useFetch';
 import Card from './components/card/Card';
 import './App.css';
@@ -10,7 +10,8 @@ import PaginationBar from './components/pagination-bar/PaginationBar';
 import Loading from './interface-elements/Loading';
 import Error from './interface-elements/Error';
 
-const App = ({ contentId, itemsPerPage, scopeClass }) => {
+const App = ({userEmail,userPassword, contentId, itemsPerPage, scopeClass}) => {
+  
   const [items, setItems] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,6 +22,8 @@ const App = ({ contentId, itemsPerPage, scopeClass }) => {
   useEffect(() => {
     async function fetchData() {
       const { url, options } = FETCH_CONTENT({
+        userEmail,
+        userPassword,
         contentId,
         query: query || undefined,
         itemsPerPage,
@@ -48,6 +51,8 @@ const App = ({ contentId, itemsPerPage, scopeClass }) => {
 
   const handleSearch = async (query) => {
     const { url, options } = FETCH_CONTENT({
+      userEmail,
+      userPassword,
       contentId,
       query,
       itemsPerPage,
@@ -78,10 +83,9 @@ const App = ({ contentId, itemsPerPage, scopeClass }) => {
           <ul className="liferay-search__results-list">
             {(searchResults.length > 0 ? searchResults : items).map((item) => (
               <Card
-                item={item}
-                url={API_URL}
-                contentId={contentId}
-                key={item.id}
+                key={item.key}
+                id={item.id}
+                name={item.title}
               />
             ))}
           </ul>
@@ -99,6 +103,8 @@ class WebComponent extends HTMLElement {
   connectedCallback() {
     createRoot(this).render(
       <App
+        userEmail={this.getAttribute('userEmail')}
+        userPassword={this.getAttribute('userPassword')}
         contentId={this.getAttribute('contentId')}
         itemsPerPage={this.getAttribute('itemsPerPage')}
         scopeClass={this.getAttribute('scopeClass')}
@@ -107,8 +113,6 @@ class WebComponent extends HTMLElement {
     );
   }
 }
-
-// contentId, itemsPerPage, scopeClass
 
 const ELEMENT_ID = 'liferay-search';
 if (!customElements.get(ELEMENT_ID)) {

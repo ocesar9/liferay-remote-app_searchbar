@@ -1,19 +1,19 @@
-export const API_URL =
+const API_URL =
   typeof Liferay !== 'undefined' ? Liferay.ThemeDisplay.getPortalURL() : null;
-export const acceptLanguage =
-  typeof themeDisplay !== 'undefined'
-    ? themeDisplay.getLanguageId().replace('_', '-')
-    : 'en-US';
+const acceptLanguage =
+  typeof themeDisplay !== 'undefined' ? themeDisplay.getLanguageId().replace('_', '-') : 'en-US';
 
 export function FETCH_CONTENT({
+  userEmail,
+  userPassword,
   contentId,
-  acceptLanguage,
   query,
   itemsPerPage,
   currentPage,
   search = false,
 }) {
   let url;
+  const auth = window.btoa(`${userEmail}:${userPassword}`);
 
   if (search) {
     let encodedQuery = encodeURIComponent(query);
@@ -25,9 +25,10 @@ export function FETCH_CONTENT({
   return {
     url,
     options: {
-      method: 'GET',
+      method: 'GET', 
       headers: {
-        'Accept-Language': acceptLanguage,
+        'Accept-Language': acceptLanguage, 
+        'Authorization': `Basic ${auth}` 
       },
     },
   };
