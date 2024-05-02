@@ -31,7 +31,7 @@
 
     Liferay.ThemeDisplay.getPortalURL()
 
-> Caso sua aplicação faça uso do ESLint crie uma exceção para o uso da váriavel Liferay
+> Caso sua aplicação faça uso de variáveis Liferay crie o arquivo eslintrc.js com a seguinte configuração
 
     module.exports = {
     globals: {
