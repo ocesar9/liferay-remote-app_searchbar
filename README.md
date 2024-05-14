@@ -1,4 +1,4 @@
-# Liferay SearchBar
+# Liferay SearchBar - Remote App
 
 ### Esta barra de pesquisa foi desenvolvida para proporcionar uma alternativa ágil na obtenção de dados do portal, especialmente em situações que exigem otimização. Sua estrutura foi concebida como uma extensão do cliente Liferay.
 
